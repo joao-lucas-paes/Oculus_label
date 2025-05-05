@@ -1,0 +1,43 @@
+{
+  "name": "oculus",
+  "version": "0.0.1",
+  "description": "Oculus is a computer vision application designed to be intuitive, intelligent, and efficient.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:ts": "tsc",
+    "start:dev": "concurrently -k \"tsc -w\" \"ts-node ./node_modules/.bin/electron .\"",
+    "start": "npm run build:ts && electron .",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "npm run build:ts && electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joao-lucas-paes/Oculus_label.git"
+  },
+  "keywords": [
+    "vision",
+    "dl",
+    "label",
+    "image"
+  ],
+  "author": "Joao Lucas Aparecido Rocha Paes and Wanderson Junior Bignardi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joao-lucas-paes/Oculus_label/issues"
+  },
+  "homepage": "https://github.com/joao-lucas-paes/Oculus_label#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "concurrently": "^9.1.2",
+    "electron": "^36.1.0",
+    "electron-builder": "^26.0.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "build": {
+    "appId": "com.oculus.labelizer",
+    "files": ["dist/**/*", "public/**/*", "package.json"],
+    "directories": { "buildResources": "assets" }
+  }
+}
