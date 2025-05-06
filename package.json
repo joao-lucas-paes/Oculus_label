@@ -5,11 +5,14 @@
   "main": "dist/index.js",
   "scripts": {
     "build:ts": "tsc",
-    "start:dev": "concurrently -k \"tsc -w\" \"ts-node ./node_modules/.bin/electron .\"",
-    "start": "npm run build:ts && electron .",
+    "build:assets": "cpy \"src/**/*.html\" \"src/**/*.css\" dist/src",
+    "build": "npm run build:ts && npm run build:assets",
+    "start:dev": "concurrently -k \"tsc -w\" \"npm run watch:assets\" \"ts-node ./node_modules/.bin/electronmon ./dist\"",
+    "start": "npm run build && electron .",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "npm run build:ts && electron-builder"
+    "dist": "npm run build && electron-builder",
+    "watch:assets": "npm run build:assets && chokidar \"src/**/*.html\" \"src/**/*.css\" -c \"npm run build:assets\""
   },
   "repository": {
     "type": "git",
@@ -28,16 +31,25 @@
   },
   "homepage": "https://github.com/joao-lucas-paes/Oculus_label#readme",
   "devDependencies": {
-    "@types/node": "^22.15.3",
+    "@types/node": "22.15.9",
+    "chokidar-cli": "^3.0.0",
     "concurrently": "^9.1.2",
+    "cpy-cli": "^5.0.0",
     "electron": "^36.1.0",
-    "electron-builder": "^26.0.12",
+    "electron-builder": "26.0.15",
+    "electronmon": "^2.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "build": {
     "appId": "com.oculus.labelizer",
-    "files": ["dist/**/*", "public/**/*", "package.json"],
-    "directories": { "buildResources": "assets" }
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
