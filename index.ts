@@ -1,4 +1,3 @@
-import {app, BrowserWindow} from 'electron'
-import * as path from 'path'
+import {AppSystem} from "./src/arc/AppSystem";
 
-let mainWindow: BrowserWindow | null = null
+AppSystem.init()
