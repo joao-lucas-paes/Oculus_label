@@ -1,5 +1,5 @@
 import {app, BrowserWindow} from 'electron'
-import {HOME, UNIX_LIKE_OS} from '../const/arc'
+import {HOME, PATH_VIEW, UNIX_LIKE_OS} from '../const/arc'
 
 /**
  * This class has the responsability of manage the core initialization
@@ -18,8 +18,8 @@ export class AppSystem {
 
        let create = () => {
             let initWindow = () => {
-                AppSystem.window = new BrowserWindow({width:800, height: 600})
-                AppSystem.window.loadFile(HOME)
+                AppSystem.window = new BrowserWindow({width:800, height: 600}) // @TODO: change to a well configured constant
+                AppSystem.window.loadFile(HOME, {baseURLForDataURL:PATH_VIEW})
             }
             initWindow()
 
