@@ -5,13 +5,13 @@ html {
 
 :root {
   --textcolor: #e7e7e7;
-  --linkcolor: #3216d1;
+  --linkcolor: #2c3bff;
   user-select: none;
 }
 
 body {
     margin: 0;
-    background: linear-gradient(145deg, hsl(353 82% 9% / 1) 0%, hsl(230 85% 5% / 1) 60%);
+    background: hsl(222.06deg 30% 16%);
     height: 100%;
     width: 100%;
     display: flex;
@@ -30,5 +30,14 @@ body {
     white-space: nowrap;
     max-width: 100%; 
     padding: .3rem;
-    background-color: rgba(54, 54, 54, 0.041);
+    font-weight: bold;
+}
+
+.refLink:hover {
+    text-decoration: underline;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
 }

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build:ts": "tsc",
-    "build:assets": "cpy \"src/**/*.html\" \"src/**/*.css\" dist/src",
+    "build:assets": "cpy \"src/**/*.html\" \"src/**/*.css\" \"src/**/*.svg\" dist/src",
     "build": "npm run build:ts && npm run build:assets",
     "start:dev": "concurrently -k \"tsc -w\" \"npm run watch:assets\" \"ts-node ./node_modules/.bin/electronmon ./dist\"",
     "start": "npm run build && electron .",
@@ -24,7 +24,7 @@
     "label",
     "image"
   ],
-  "author": "Joao Lucas Aparecido Rocha Paes and Wanderson Junior Bignardi",
+  "author": "Joao Lucas Aparecido Rocha Paes",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/joao-lucas-paes/Oculus_label/issues"
