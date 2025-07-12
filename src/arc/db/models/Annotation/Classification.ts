@@ -1,6 +1,7 @@
 import { Data } from '../Data';
 import Annotation from "./Annotation";
 import Classes from '../Classes';
+import { NULL_STRING } from "../../../../const/arc";
 
 class Classification extends Annotation {
     private class_ann: Classes;
@@ -12,7 +13,7 @@ class Classification extends Annotation {
 }
 
 class ClassificationWithCaption extends Classification {
-    private data: string = '';
+    private data: string = NULL_STRING;
 
     constructor(annotation_id:number, data_id:Data, class_ann:Classes, data:string) {
         super(annotation_id, data_id, class_ann);

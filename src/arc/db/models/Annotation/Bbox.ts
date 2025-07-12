@@ -1,5 +1,6 @@
 import { Data } from '../Data';
 import Annotation from "./Annotation";
+import { NULL_STRING } from "../../../../const/arc";
 
 class BBox extends Annotation {
     private x_min: number; // left coordinate of the bounding box
@@ -18,7 +19,7 @@ class BBox extends Annotation {
 }
 
 class BBoxWithCaption extends BBox {
-    private data: string = '';
+    private data: string = NULL_STRING;
 
     constructor(annotation_id:number, data_id:Data,
         x_min:number, y_min:number, x_max:number, y_max:number, data:string) {

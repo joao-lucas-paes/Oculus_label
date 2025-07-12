@@ -1,8 +1,10 @@
 import { Data } from '../Data';
 import Annotation from "./Annotation";
+import { NULL_STRING } from "../../../../const/arc";
+import tuple from '../../../interface/tuple';
 
 class Mask extends Annotation {
-    private mask: Array<Array<number>> = new Array<Array<number>>();
+    private mask: Array<tuple> = new Array<tuple>();
 
     constructor(annotation_id:number, data_id:Data, mask:object) {
         super(annotation_id,data_id);
@@ -11,7 +13,7 @@ class Mask extends Annotation {
 }
 
 class MaskWithCaption extends Mask {
-    private data: string = '';
+    private data: string = NULL_STRING;
 
     constructor(annotation_id:number, data_id:Data, mask:object, data:string) {
         super(annotation_id, data_id, mask);

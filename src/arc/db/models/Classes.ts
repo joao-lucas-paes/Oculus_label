@@ -1,9 +1,10 @@
 import Project from "./Projects";
+import { NULL_ID, NULL_STRING } from "../../../const/arc";
 
 export default class Classes {
-    private class_id: number = -1; // Class id
-    private name: string = ''; // class name
-    private description: string = ''; // class description
+    private class_id: number = NULL_ID; // Class id
+    private name: string = NULL_STRING; // class name
+    private description: string = NULL_STRING; // class description
     private project_id: Project; // project that the class belongs to
     private r: number; // red
     private g: number; // green

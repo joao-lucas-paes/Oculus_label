@@ -12,3 +12,12 @@ export const HOME = PATH_VIEW + "/html/home.html"
 export const UNIX_LIKE_OS = 'darwin'
 
 //#endregion
+
+//#region db
+/**
+ * id of null objects constant
+ */
+export const NULL_ID = -1
+export const NULL_STRING = ""
+
+//#region db
