@@ -20,4 +20,10 @@ export const UNIX_LIKE_OS = 'darwin'
 export const NULL_ID = -1
 export const NULL_STRING = ""
 
+/**
+ * Path to database file.
+ */
+export const DB_PATH = "oculus.sqlite3"
+export const DB_DRIVER = "better-sqlite3"
+
 //#region db
