@@ -1,14 +1,14 @@
 import Project from './Projects';
 
 class Data {
-    private Data_id: number = -1; // data id
+    private data_id: number = -1; // data id
     private name: string = ''; // file name
     private is_video: boolean = false; // is video or not
     private project: Project; // project that the data belongs to
 
 
     constructor(data_id:number, name:string, project:Project, is_video:boolean=false) {
-        this.Data_id = data_id;
+        this.data_id = data_id;
         this.name = name;
         this.project = project;
         this.is_video = is_video;
