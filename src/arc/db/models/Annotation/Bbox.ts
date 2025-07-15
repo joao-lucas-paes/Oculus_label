@@ -1,31 +1,20 @@
 import { Data } from '../Data';
 import Annotation from "./Annotation";
 import { NULL_STRING } from "../../../../const/arc";
+import Classes from '../Classes';
 
-class BBox extends Annotation {
+export default class BBox extends Annotation {
     private x_min: number; // left coordinate of the bounding box
     private y_min: number; // top coordinate of the bounding box
     private x_max: number; // width of the bounding box
     private y_max: number; // height of the bounding box
 
-    constructor(annotation_id:number, data_id:Data,
+    constructor(annotation_id:number, data_id:Data, classes:Classes, caption:string=NULL_STRING,
         x_min:number, y_min:number, x_max:number, y_max:number) {
-        super(annotation_id,data_id);
+        super(annotation_id,data_id,classes,caption);
         this.x_min = x_min;
         this.y_min = y_min;
         this.x_max = x_max;
         this.y_max = y_max;
     }
 }
-
-class BBoxWithCaption extends BBox {
-    private data: string = NULL_STRING;
-
-    constructor(annotation_id:number, data_id:Data,
-        x_min:number, y_min:number, x_max:number, y_max:number, data:string) {
-        super(annotation_id,data_id,x_min,y_min,x_max,y_max);
-        this.data = data;
-    }
-}
-
-export default {BBox, BBoxWithCaption};
