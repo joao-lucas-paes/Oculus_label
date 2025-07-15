@@ -79,7 +79,7 @@ function createDataTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
 
         
         table.string('name').notNullable();
-        table.boolean('is_video').defaultTo(false);
+        table.integer('frame_index').defaultTo(-1); // -1 means not a video, 0 means a video
 
         table
             .integer('project_id')
