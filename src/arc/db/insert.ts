@@ -1,6 +1,10 @@
 import { Knex } from 'knex';
 import Classes from '../interface/Classes';
-import { Data } from '../interface/Data';
+import Data from '../interface/Data';
+import Annotation from '../interface/Annotation/Annotation';
+import BBox from '../interface/Annotation/Bbox';
+import Mask from '../interface/Annotation/Mask';
+import Projects from '../interface/Projects';
 
 async function insertClasses(db: Knex, classes: Classes[]): Promise<number[]> {
     try {
@@ -24,7 +28,7 @@ async function insertData(db: Knex, data: Data[]): Promise<number[]> {
     }
 }
 
-async function insertAnnotations(db: Knex, annotations: any[]): Promise<number[]> {
+async function insertAnnotations(db: Knex, annotations: Annotation[]): Promise<number[]> {
     try {
         const insertedIds = await db('annotations').insert(annotations);
         return insertedIds;
@@ -35,7 +39,7 @@ async function insertAnnotations(db: Knex, annotations: any[]): Promise<number[]
     }
 }
 
-async function insertBoundingBoxes(db: Knex, boundingBoxes: any[]): Promise<number[]> {
+async function insertBoundingBoxes(db: Knex, boundingBoxes: BBox[]): Promise<number[]> {
     try {
         const insertedIds = await db('bounding_boxes').insert(boundingBoxes);
         return insertedIds;
@@ -46,7 +50,7 @@ async function insertBoundingBoxes(db: Knex, boundingBoxes: any[]): Promise<numb
     }
 }
 
-async function insertMasks(db: Knex, masks: any[]): Promise<number[]> {
+async function insertMasks(db: Knex, masks: Mask[]): Promise<number[]> {
     try {
         const insertedIds = await db('masks').insert(masks);
         return insertedIds;
@@ -57,7 +61,7 @@ async function insertMasks(db: Knex, masks: any[]): Promise<number[]> {
     }
 }
 
-async function insertProjects(db: Knex, projects: any[]): Promise<number[]> {
+async function insertProjects(db: Knex, projects: Projects[]): Promise<number[]> {
     try {
         const insertedIds = await db('projects').insert(projects);
         return insertedIds;
@@ -68,16 +72,6 @@ async function insertProjects(db: Knex, projects: any[]): Promise<number[]> {
     }
 }
 
-async function insertFrames(db: Knex, frames: any[]): Promise<number[]> {
-    try {
-        const insertedIds = await db('frames').insert(frames);
-        return insertedIds;
-    } catch (error) {
-        // @TODO Adicionar Loggers aqui
-        console.error('Some kind of error in inserting frames:', error);
-        throw error;
-    }
-}
 
 export default {
     insertClasses,
@@ -85,6 +79,5 @@ export default {
     insertAnnotations,
     insertBoundingBoxes,
     insertMasks,
-    insertProjects,
-    insertFrames
+    insertProjects
 };
