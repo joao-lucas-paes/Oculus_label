@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
-import Classes from './models/Classes';
-import { Data } from './models/Data';
+import Classes from '../interface/Classes';
+import { Data } from '../interface/Data';
 
 async function insertClasses(db: Knex, classes: Classes[]): Promise<number[]> {
     try {
