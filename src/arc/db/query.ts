@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 import Projects from '../interface/Projects';
 import Classes from '../interface/Classes';
-import { Data } from 'electron';
+import Data from '../interface/Data';
 import Annotation from '../interface/Annotation/Annotation';
 import Bbox from '../interface/Annotation/Bbox';
 import Mask from '../interface/Annotation/Mask';
