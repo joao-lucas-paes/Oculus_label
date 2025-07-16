@@ -1,5 +1,6 @@
-export default class Projects {
-    private project_id: number = -1; // Project id
-    private root_path: string = ''; // path to project
-    public desc!: string; // project description
+export default interface Projects {
+    project_id: number; // Project id
+    name: string; // Project name
+    root_path: string; // path to project
+    description: string; // project description
 }
