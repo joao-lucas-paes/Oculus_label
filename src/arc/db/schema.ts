@@ -97,7 +97,7 @@ function createProjectsTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => 
     return (table) => {
         table.increments();
         table.string('name').notNullable().unique();
-        table.text('path').notNullable();
+        table.text('root_path').notNullable();
         table.text('description');
         table.timestamps(true, true);
     };
