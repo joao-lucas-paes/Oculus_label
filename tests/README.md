@@ -6,7 +6,7 @@ This is an test‑suite for all components across every domain. Its principles a
    - All tests should be aproved before all deployment or critical modification.
 
 2. **Redundancy over gaps**  
-   - Having overlapping tests is preferable to over-testing.
+   - Having overlapping tests is preferable to under-testing.
    - Passing all tests does **not** mean that the code is free of bugs or problems.
 
 3. **Simple and maintainable**  
