@@ -47,10 +47,10 @@ async function findAnnotationsByDataId(db: Knex, dataId: number): Promise<Annota
     }
 }
 
-async function findDataAnnotationById(db: Knex, classId: number): Promise<(Bbox | Mask)[]> {
+async function findDataAnnotationByAnnotationId(db: Knex, annotationId: number): Promise<(Bbox | Mask)[]> {
     try {
-        const bboxes: Bbox[] = await db(BOUNDING_BOX_TABLE).where({ annotation_id: classId });
-        const masks: Mask[] = await db(MASK_TABLE).where({ annotation_id: classId });
+        const bboxes: Bbox[] = await db(BOUNDING_BOX_TABLE).where({ annotation_id: annotationId });
+        const masks: Mask[] = await db(MASK_TABLE).where({ annotation_id: annotationId });
         return Array.from(new Set([...bboxes, ...masks]));
     } catch (error) {
         console.error('Error fetching class by ID:', error);
@@ -58,4 +58,4 @@ async function findDataAnnotationById(db: Knex, classId: number): Promise<(Bbox 
     }
 }
 
-export { getProjects, findClassesByProjectId, findAnnotationsByDataId, findClassesTypeById, findDataByProjectId };
+export { getProjects, findClassesByProjectId, findAnnotationsByDataId, findDataAnnotationByAnnotationId, findDataByProjectId };
