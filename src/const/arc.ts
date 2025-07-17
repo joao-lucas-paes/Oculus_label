@@ -26,4 +26,14 @@ export const NULL_STRING = ""
 export const DB_PATH = "oculus.sqlite3"
 export const DB_DRIVER = "better-sqlite3"
 
+/**
+ * Names of the database tables.
+ */
+export const PROJECT_TABLE = "projects"
+export const CLASS_TABLE = "classes"
+export const DATA_TABLE = "data"
+export const ANNOTATION_TABLE = "annotation"
+export const BOUNDING_BOX_TABLE = "BoundingBox"
+export const MASK_TABLE = "Mask"
+
 //#region db
