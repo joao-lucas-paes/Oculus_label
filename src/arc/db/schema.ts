@@ -1,12 +1,13 @@
 import knex from 'knex';
+import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
 
 export default function createSchema(dbConnection: knex.Knex) {
-    return dbConnection.schema.createTable('classes', createClassesTable())
-    .createTable('projects', createProjectsTable())
-    .createTable('data', createDataTable())
-    .createTable('annotation', createAnnotationTable())
-    .createTable('BoundingBox', createBoundingBoxTable())
-    .createTable('Mask', createMaskTable());
+    return dbConnection.schema.createTable(CLASS_TABLE, createClassesTable())
+    .createTable(PROJECT_TABLE, createProjectsTable())
+    .createTable(DATA_TABLE, createDataTable())
+    .createTable(ANNOTATION_TABLE, createAnnotationTable())
+    .createTable(BOUNDING_BOX_TABLE, createBoundingBoxTable())
+    .createTable(MASK_TABLE, createMaskTable());
 }
 
 function createMaskTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any {
@@ -16,9 +17,10 @@ function createMaskTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
             .integer('annotation_id')
             .unsigned()
             .references('id')
-            .inTable('annotation')
+            .inTable(ANNOTATION_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
+        table.json('mask').notNullable();
     }
 };
 
@@ -30,7 +32,7 @@ function createBoundingBoxTable(): (tableBuilder: knex.Knex.CreateTableBuilder) 
             .integer('annotation_id')
             .unsigned()
             .references('id')
-            .inTable('annotation')
+            .inTable(ANNOTATION_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
@@ -55,19 +57,19 @@ function createAnnotationTable(): (tableBuilder: knex.Knex.CreateTableBuilder) =
             .integer('class_id')
             .unsigned()
             .references('id')
-            .inTable('classes')
+            .inTable(CLASS_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
         table
-            .integer('project_id')
+            .integer('data_id')
             .unsigned()
             .references('id')
-            .inTable('projects')
+            .inTable(DATA_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
-        table.text('data');
+        table.text('caption');
 
         table.timestamps(true, true);
     };
@@ -85,7 +87,7 @@ function createDataTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
             .integer('project_id')
             .unsigned()
             .references('id')
-            .inTable('projects')
+            .inTable(PROJECT_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
@@ -105,12 +107,12 @@ function createProjectsTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => 
 
 function createClassesTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any {
     return (table) => {
-        // compused primary key
-        table.integer('id').unsigned().notNullable();
-        table.integer('project_id').unsigned().notNullable();
-        table.primary(['id', 'project_id']);
+        table.increments('id').primary(); // table id
 
-        //columns
+        table.increments('class_id').notNullable().unique(); // class id
+        
+        // columns
+        table.integer('project_id').unsigned().notNullable();
         table.string('name').notNullable().unique();
         table.text('description');
         table.integer('r').notNullable(); // red
@@ -121,7 +123,7 @@ function createClassesTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => a
         table
             .foreign('project_id')
             .references('id')
-            .inTable('projects')
+            .inTable(PROJECT_TABLE)
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
