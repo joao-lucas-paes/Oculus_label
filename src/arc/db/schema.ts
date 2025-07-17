@@ -108,16 +108,17 @@ function createProjectsTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => 
 function createClassesTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any {
     return (table) => {
         table.increments('id').primary(); // table id
-
-        table.increments('class_id').notNullable().unique(); // class id
         
         // columns
+        table.increments('class_id').notNullable(); // class id
         table.integer('project_id').unsigned().notNullable();
         table.string('name').notNullable().unique();
         table.text('description');
         table.integer('r').notNullable(); // red
         table.integer('g').notNullable(); // green
         table.integer('b').notNullable(); // blue
+
+        table.unique(['class_id', 'project_id']); // unique constraint on class_id and project_id
 
         // foreign key
         table
