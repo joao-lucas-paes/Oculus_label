@@ -5,10 +5,11 @@ import Annotation from '../interface/Annotation/Annotation';
 import BBox from '../interface/Annotation/Bbox';
 import Mask from '../interface/Annotation/Mask';
 import Projects from '../interface/Projects';
+import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
 
 async function insertClasses(db: Knex, classes: Classes[]): Promise<number[]> {
     try {
-        const insertedIds = await db('classes').insert(classes);
+        const insertedIds = await db(CLASS_TABLE).insert(classes);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
@@ -19,7 +20,7 @@ async function insertClasses(db: Knex, classes: Classes[]): Promise<number[]> {
 
 async function insertData(db: Knex, data: Data[]): Promise<number[]> {
     try {
-        const insertedIds = await db('data').insert(data);
+        const insertedIds = await db(DATA_TABLE).insert(data);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
@@ -30,7 +31,7 @@ async function insertData(db: Knex, data: Data[]): Promise<number[]> {
 
 async function insertAnnotations(db: Knex, annotations: Annotation[]): Promise<number[]> {
     try {
-        const insertedIds = await db('annotations').insert(annotations);
+        const insertedIds = await db(ANNOTATION_TABLE).insert(annotations);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
@@ -41,7 +42,7 @@ async function insertAnnotations(db: Knex, annotations: Annotation[]): Promise<n
 
 async function insertBoundingBoxes(db: Knex, boundingBoxes: BBox[]): Promise<number[]> {
     try {
-        const insertedIds = await db('bounding_boxes').insert(boundingBoxes);
+        const insertedIds = await db(BOUNDING_BOX_TABLE).insert(boundingBoxes);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
@@ -52,7 +53,7 @@ async function insertBoundingBoxes(db: Knex, boundingBoxes: BBox[]): Promise<num
 
 async function insertMasks(db: Knex, masks: Mask[]): Promise<number[]> {
     try {
-        const insertedIds = await db('masks').insert(masks);
+        const insertedIds = await db(MASK_TABLE).insert(masks);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
@@ -63,7 +64,7 @@ async function insertMasks(db: Knex, masks: Mask[]): Promise<number[]> {
 
 async function insertProjects(db: Knex, projects: Projects[]): Promise<number[]> {
     try {
-        const insertedIds = await db('projects').insert(projects);
+        const insertedIds = await db(PROJECT_TABLE).insert(projects);
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui
