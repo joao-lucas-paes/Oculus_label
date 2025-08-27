@@ -1,5 +1,5 @@
 export default interface Classes {
-    id: number; // Class id
+    class_id: number; // class id
     project_id: number; // id project that the class belongs to
     name: string; // class name
     description: string; // class description
