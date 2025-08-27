@@ -1,5 +1,4 @@
 export default interface Classes {
-    id: number; // table id
     class_id: number; // class id
     project_id: number; // id project that the class belongs to
     name: string; // class name

@@ -1,5 +1,4 @@
 export default interface BBox {
-    id: number; // bounding box id
     annotation_id: number; // annotation id 
     x_min: number; // left coordinate of the bounding box
     y_min: number; // top coordinate of the bounding box

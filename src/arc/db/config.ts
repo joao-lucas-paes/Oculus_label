@@ -27,3 +27,4 @@ async function closeDBConnection(dbConnection: knex.Knex) {
     return dbConnection.destroy();
 }
 
+export { createDBConnection, getDefaultDBConnection, closeDBConnection };

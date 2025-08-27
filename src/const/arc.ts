@@ -23,7 +23,7 @@ export const NULL_STRING = ""
 /**
  * Path to database file.
  */
-export const DB_PATH = "oculus.sqlite3"
+export const DB_PATH = "oculus.db"
 export const DB_DRIVER = "better-sqlite3"
 
 /**

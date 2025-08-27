@@ -10,7 +10,7 @@
     "start:dev": "concurrently -k \"tsc -w\" \"npm run watch:assets\" \"ts-node ./node_modules/.bin/electronmon ./dist\"",
     "start": "npm run build && electron .",
     "clean": "rm -rf dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dist": "npm run build && electron-builder",
     "watch:assets": "npm run build:assets && chokidar \"src/**/*.html\" \"src/**/*.css\" -c \"npm run build:assets\""
   },
@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/joao-lucas-paes/Oculus_label#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "22.15.9",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.1.2",
@@ -38,6 +39,8 @@
     "electron": "^36.1.0",
     "electron-builder": "26.0.15",
     "electronmon": "^2.0.3",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },

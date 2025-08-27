@@ -1,9 +1,9 @@
 import knex from 'knex';
 import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
 
-export default function createSchema(dbConnection: knex.Knex) {
-    return dbConnection.schema.createTable(CLASS_TABLE, createClassesTable())
-    .createTable(PROJECT_TABLE, createProjectsTable())
+export function createSchema(dbConnection: knex.Knex) {
+    return dbConnection.schema.createTable(PROJECT_TABLE, createProjectsTable())
+    .createTable(CLASS_TABLE, createClassesTable())
     .createTable(DATA_TABLE, createDataTable())
     .createTable(ANNOTATION_TABLE, createAnnotationTable())
     .createTable(BOUNDING_BOX_TABLE, createBoundingBoxTable())
@@ -110,7 +110,7 @@ function createClassesTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => a
         table.increments('id').primary(); // table id
         
         // columns
-        table.increments('class_id').notNullable(); // class id
+        table.integer('class_id').notNullable(); // class id
         table.integer('project_id').unsigned().notNullable();
         table.string('name').notNullable().unique();
         table.text('description');
