@@ -1,9 +1,9 @@
-import { createDBConnection, closeDBConnection } from "../src/arc/db/config";
-import { createSchema } from '../src/arc/db/schema';
-import { insertClasses, insertData, insertAnnotations, insertBoundingBoxes, insertMasks, insertProjects } from "../src/arc/db/insert";
-import { findAnnotationsByDataId, findClassesByProjectId, findDataAnnotationByAnnotationId, findDataByProjectId, getProjects } from "../src/arc/db/query";
-import { modifyDataTables, modifyAnnotationTables, modifyBoundingBoxTables, modifyMaskTables, modifyProjectTables, modifyClassTables } from "../src/arc/db/modify";
-import { deleteDataTables, deleteAnnotationTables, deleteBoundingBoxTables, deleteMaskTables, deleteProjectTables, deleteClassTables } from "../src/arc/db/delete";
+import { createDBConnection, closeDBConnection } from "@arc/db/config";
+import { createSchema } from '@arc/db/schema';
+import { insertClasses, insertData, insertAnnotations, insertBoundingBoxes, insertMasks, insertProjects } from "@arc/db/insert";
+import { findAnnotationsByDataId, findClassesByProjectId, findDataAnnotationByAnnotationId, findDataByProjectId, getProjects } from "@arc/db/query";
+import { modifyDataTables, modifyAnnotationTables, modifyBoundingBoxTables, modifyMaskTables, modifyProjectTables, modifyClassTables } from "@arc/db/modify";
+import { deleteDataTables, deleteAnnotationTables, deleteBoundingBoxTables, deleteMaskTables, deleteProjectTables, deleteClassTables } from "@arc/db/delete";
 
 
 import deepClone from 'lodash.clonedeep';
@@ -12,24 +12,24 @@ import fs from "fs";
 import { error } from "console";
 
 // types import 
-import Projects from '../src/arc/models/Projects';
-import Classes from '../src/arc/models/Classes';
-import Data from '../src/arc/models/Data';
-import Annotation from '../src/arc/models/Annotation/Annotation';
-import Bbox from '../src/arc/models/Annotation/Bbox';
-import Mask from '../src/arc/models/Annotation/Mask';
-import ProjectsInterface from '../src/arc/interface/Projects';
-import ClassesInterface from '../src/arc/interface/Classes';
-import DataInterface from '../src/arc/interface/Data';
-import AnnotationInterface from '../src/arc/interface/Annotation/Annotation';
-import BboxInterface from '../src/arc/interface/Annotation/Bbox';
-import MaskInterface from '../src/arc/interface/Annotation/Mask';
+import Projects from '@domain/models/Projects';
+import Classes from '@domain/models/Classes';
+import Data from '@domain/models/Data';
+import Annotation from '@domain/models/Annotation/Annotation';
+import Bbox from '@domain/models/Annotation/Bbox';
+import Mask from '@domain/models/Annotation/Mask';
+import ProjectsInterface from '@arc/dtos/Projects';
+import ClassesInterface from '@arc/dtos/Classes';
+import DataInterface from '@arc/dtos/Data';
+import AnnotationInterface from '@arc/dtos/Annotation/Annotation';
+import BboxInterface from '@arc/dtos/Annotation/Bbox';
+import MaskInterface from '@arc/dtos/Annotation/Mask';
 
 // import the json files with sample data
 import sampleProjects from "./sample_data/projects";
 import sampleClasses from "./sample_data/classes";
 import sampleData from "./sample_data/data";
-import { DB_DRIVER } from "../src/const/arc";
+import { DB_DRIVER } from "@const/arc";
 
 const PATH_DB_TEST = "./test.tmp.db";
 
