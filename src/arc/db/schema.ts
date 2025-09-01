@@ -21,6 +21,7 @@ function createMaskTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
         table.json('mask').notNullable();
+        table.binary('fingerprint').notNullable().unique(); // hash of the mask
     }
 };
 
@@ -42,6 +43,7 @@ function createBoundingBoxTable(): (tableBuilder: knex.Knex.CreateTableBuilder) 
         table.float('y_max').notNullable();
 
         table.timestamps(true, true);
+        table.unique(['annotation_id', 'x_min', 'y_min', 'x_max', 'y_max']); // unique constraint on bbox per annotation
     };
 }
 /**
@@ -83,7 +85,7 @@ function createDataTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
 
         
         table.string('name').notNullable().unique();
-        table.integer('frame_index').defaultTo(-1); // -1 means not a video, !=-1 means a video
+        table.integer('frame_index').defaultTo(-1); // -1 means not a video, >-1 means a video
 
         table
             .integer('project_id')
