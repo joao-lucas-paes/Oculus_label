@@ -1,11 +1,11 @@
 import { Knex } from 'knex';
-import classesInterface from '../interface/Classes';
-import dataInterface from '../interface/Data';
-import annotationInterface from '../interface/Annotation/Annotation';
-import bBoxInterface from '../interface/Annotation/Bbox';
-import maskInterface from '../interface/Annotation/Mask';
-import projectsInterface from '../interface/Projects';
-import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
+import classesInterface from '@arc/dtos/Classes';
+import dataInterface from '@arc/dtos/Data';
+import annotationInterface from '@arc/dtos/Annotation/Annotation';
+import bBoxInterface from '@arc/dtos/Annotation/Bbox';
+import maskInterface from '@arc/dtos/Annotation/Mask';
+import projectsInterface from '@arc/dtos/Projects';
+import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '@const/arc';
 
 async function insertClasses(db: Knex, classes: classesInterface[]): Promise<number[]> {
     try {
@@ -42,7 +42,7 @@ async function insertAnnotations(db: Knex, annotations: annotationInterface[]): 
 
 async function insertBoundingBoxes(db: Knex, boundingBoxes: bBoxInterface[]): Promise<number[]> {
     try {
-        const insertedIds = await db(BOUNDING_BOX_TABLE).insert(boundingBoxes);
+        const insertedIds = await db(BOUNDING_BOX_TABLE).insert(boundingBoxes).onConflict(["annotation_id", "x_min", "x_max", "y_max", "y_min"]).ignore();
         return insertedIds;
     } catch (error) {
         // @TODO Adicionar Loggers aqui

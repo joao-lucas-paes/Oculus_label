@@ -1,3 +1,3 @@
-import {AppSystem} from "./src/arc/AppSystem";
+import {AppSystem} from "@arc/AppSystem";
 
 AppSystem.init()

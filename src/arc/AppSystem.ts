@@ -1,5 +1,5 @@
 import {app, BrowserWindow} from 'electron'
-import {HOME, PATH_VIEW, UNIX_LIKE_OS} from '../const/arc'
+import {HOME, PATH_VIEW, UNIX_LIKE_OS} from '@const/arc'
 
 /**
  * This class has the responsability of manage the core initialization

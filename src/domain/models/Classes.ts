@@ -1,4 +1,4 @@
-import ClassesInterfaces from "../interface/Classes";
+import ClassesInterfaces from "@arc/dtos/Classes";
 
 export default class Classes implements ClassesInterfaces {
     private id: number; // table id

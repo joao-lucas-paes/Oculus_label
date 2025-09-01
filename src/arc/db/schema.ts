@@ -1,5 +1,5 @@
 import knex from 'knex';
-import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
+import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '@const/arc';
 
 export function createSchema(dbConnection: knex.Knex) {
     return dbConnection.schema.createTable(PROJECT_TABLE, createProjectsTable())
@@ -72,6 +72,8 @@ function createAnnotationTable(): (tableBuilder: knex.Knex.CreateTableBuilder) =
         table.text('caption');
 
         table.timestamps(true, true);
+
+        table.check('caption IS NOT NULL OR class_id IS NOT NULL'); // at least one of caption or class_id must be not null
     };
 }
 
@@ -80,7 +82,7 @@ function createDataTable(): (tableBuilder: knex.Knex.CreateTableBuilder) => any 
         table.increments();
 
         
-        table.string('name').notNullable();
+        table.string('name').notNullable().unique();
         table.integer('frame_index').defaultTo(-1); // -1 means not a video, !=-1 means a video
 
         table

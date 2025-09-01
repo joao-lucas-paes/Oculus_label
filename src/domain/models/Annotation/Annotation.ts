@@ -1,4 +1,4 @@
-import AnnotationInterface from "../../interface/Annotation/Annotation";
+import AnnotationInterface from "@arc/dtos/Annotation/Annotation";
 
 export default class Annotation implements AnnotationInterface {
     private id: number; // annotation id

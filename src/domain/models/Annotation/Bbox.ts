@@ -1,4 +1,4 @@
-import BBoxInterface from "../../interface/Annotation/Bbox";
+import BBoxInterface from "@arc/dtos/Annotation/Bbox";
 
 export default class BBox implements BBoxInterface {
     private id: number; // bounding box id

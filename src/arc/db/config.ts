@@ -1,5 +1,5 @@
 import knex from 'knex';
-import { DB_PATH, DB_DRIVER } from '../../const/arc';
+import { DB_PATH, DB_DRIVER } from '@const/arc';
 
 /**
  * Creates a database connection using the specified client and filename.

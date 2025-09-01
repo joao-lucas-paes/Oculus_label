@@ -1,11 +1,11 @@
 import { Knex } from 'knex';
-import Projects from '../models/Projects';
-import Classes from '../models/Classes';
-import Data from '../models/Data';
-import Annotation from '../models/Annotation/Annotation';
-import Bbox from '../models/Annotation/Bbox';
-import Mask from '../models/Annotation/Mask';
-import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '../../const/arc';
+import Projects from '@domain/models/Projects';
+import Classes from '@domain/models/Classes';
+import Data from '@domain/models/Data';
+import Annotation from '@domain/models/Annotation/Annotation';
+import Bbox from '@domain/models/Annotation/Bbox';
+import Mask from '@domain/models/Annotation/Mask';
+import { ANNOTATION_TABLE, BOUNDING_BOX_TABLE, CLASS_TABLE, DATA_TABLE, MASK_TABLE, PROJECT_TABLE } from '@const/arc';
 
 async function modifyDataTables(db: Knex, data: Data): Promise<void> {
     await modifyTable(db, data, DATA_TABLE);

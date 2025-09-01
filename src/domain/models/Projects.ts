@@ -1,4 +1,4 @@
-import ProjectInterface from "../interface/Projects";
+import ProjectInterface from "@arc/dtos/Projects";
 
 export default class Projects implements ProjectInterface {
     private id: number; // Project id

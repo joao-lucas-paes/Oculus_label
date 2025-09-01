@@ -1,4 +1,4 @@
-import dataInterface from "../interface/Data";
+import dataInterface from "@arc/dtos/Data";
 
 export default class Data implements dataInterface {
     private id: number; // data id

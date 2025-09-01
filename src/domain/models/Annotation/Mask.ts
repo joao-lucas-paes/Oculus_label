@@ -1,5 +1,5 @@
-import tuple from '../../interface/tuple';
-import maskInterface from '../../interface/Annotation/Mask';
+import tuple from '@arc/dtos/tuple';
+import maskInterface from '@arc/dtos/Annotation/Mask';
 
 export default class Mask implements maskInterface {
     private id: number; // mask id

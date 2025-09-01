@@ -9,7 +9,15 @@
       "esModuleInterop": true,
       "sourceMap": true,
       "skipLibCheck": true,
-      "types": ["jest"]
+      "types": ["jest"],
+      "baseUrl": ".",
+      "paths": {
+        "@domain/*": ["src/domain/*"],
+        "@arc/*": ["src/arc/*"],
+        "@app/*": ["src/app/*"],
+        "@ui/*": ["src/ui/*"],
+        "@const/*": ["src/const/*"],
+      }
     },
     "include": ["src/**/*", "index.ts"]
   }
